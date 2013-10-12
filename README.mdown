@@ -15,7 +15,7 @@ your application.
 
 To create a new Croogo project using [composer](http://getcomposer.org):
 
-	composer create-project croogo/croogo-app app
+	composer create-project croogo/app app
 	cd app
 	composer install
 
