@@ -3,11 +3,7 @@ Config/croogo.php
 Config/database.php
 Config/settings.json
 webroot/uploads/
-Vendor/autoload.php
-Vendor/bin
-Vendor/composer
-Vendor/croogo
-Vendor/cakephp
+Vendor/
 *.bak
 *.swp
 
