@@ -29,9 +29,9 @@
 			"type": "package",
 			"package": {
 				"name": "cakephp/cakephp",
-				"version": "2.3.5",
+				"version": "2.4.1",
 				"dist": {
-					"url": "https://github.com/cakephp/cakephp/archive/2.3.5.zip",
+					"url": "https://github.com/cakephp/cakephp/archive/2.4.1.zip",
 					"type": "zip"
 				},
 				"include-path": ["lib/"]
@@ -40,7 +40,7 @@
 	],
 	"require": {
 		"php": ">=5.3.10",
-		"croogo/croogo": "dev-1.6",
-		"cakephp/cakephp": "~2.3"
+		"croogo/croogo": "1.6.*@dev",
+		"cakephp/cakephp": "~2.4"
 	}
 }
