@@ -21,3 +21,4 @@ tmp/
 
 # Others
 .DS_Store
+composer.lock
