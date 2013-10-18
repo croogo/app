@@ -42,5 +42,8 @@
 		"php": ">=5.3.10",
 		"croogo/croogo": "dev-vagrant",
 		"cakephp/cakephp": "~2.3"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*@dev"
 	}
 }
