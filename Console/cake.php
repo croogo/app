@@ -34,7 +34,7 @@ if (!$found && function_exists('ini_set')) {
 	$root = dirname($appDir);
 	ini_set('include_path',
 		$root . $ds . 'lib' . PATH_SEPARATOR .
-		$vendorDir . 'cakephp' . $ds . 'cakephp' . $ds . 'lib' . PATH_SEPARATOR .
+		$vendorDir . 'pear-pear.cakephp.org' . $ds . 'CakePHP' .  PATH_SEPARATOR .
 		ini_get('include_path')
 	);
 
