@@ -36,7 +36,7 @@ Alternatively, you can also use the installer from the browser.
 You can use `git` to setup your Croogo project:
 
 	git clone http://github.com/croogo/app app
-	cd app && Console/add_submodules
+	cd app && Console/add_submodule
 
 The above commands will setup an `app` directory with all the necessary
 submodules registered.
