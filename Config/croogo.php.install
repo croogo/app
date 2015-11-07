@@ -35,6 +35,11 @@
 Configure::write('debug', 1);
 
 /**
+ * Set a default language
+ */
+Configure::write('defaultLanguage', 'eng');
+
+/**
  * Configure the Error handler used to handle errors for your application.  By default
  * ErrorHandler::handleError() is used.  It will display errors using Debugger, when debug > 0
  * and log errors with CakeLog when debug = 0.
