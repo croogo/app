@@ -79,4 +79,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      * routes you want in your application.
      */
     $routes->fallbacks(DashedRoute::class);
+
+    $routes->prefix('admin', function(RouteBuilder $routes) {
+        $routes->fallbacks(DashedRoute::class);
+    });
 });
