@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link      http://cakephp.org CakePHP(tm) Project
+ * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link      https://cakephp.org CakePHP(tm) Project
  * @since     3.0.0
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
 namespace App\Console;
 
@@ -172,10 +172,24 @@ class Installer
      */
     public static function setSecuritySalt($dir, $io)
     {
-        $config = $dir . '/config/app.php';
+        $newKey = hash('sha256', Security::randomBytes(64));
+        static::setSecuritySaltInFile($dir, $io, $newKey, 'app.php');
+    }
+
+    /**
+     * Set the security.salt value in a given file
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param string $newKey key to set in the file
+     * @param string $file A path to a file relative to the application's root
+     * @return void
+     */
+    public static function setSecuritySaltInFile($dir, $io, $newKey, $file)
+    {
+        $config = $dir . '/config/' . $file;
         $content = file_get_contents($config);
 
-        $newKey = hash('sha256', Security::randomBytes(64));
         $content = str_replace('__SALT__', $newKey, $content, $count);
 
         if ($count == 0) {
@@ -186,10 +200,40 @@ class Installer
 
         $result = file_put_contents($config, $content);
         if ($result) {
-            $io->write('Updated Security.salt value in config/app.php');
+            $io->write('Updated Security.salt value in config/' . $file);
 
             return;
         }
         $io->write('Unable to update Security.salt value.');
+    }
+
+    /**
+     * Set the APP_NAME value in a given file
+     *
+     * @param string $dir The application's root directory.
+     * @param \Composer\IO\IOInterface $io IO interface to write to console.
+     * @param string $appName app name to set in the file
+     * @param string $file A path to a file relative to the application's root
+     * @return void
+     */
+    public static function setAppNameInFile($dir, $io, $appName, $file)
+    {
+        $config = $dir . '/config/' . $file;
+        $content = file_get_contents($config);
+        $content = str_replace('__APP_NAME__', $appName, $content, $count);
+
+        if ($count == 0) {
+            $io->write('No __APP_NAME__ placeholder to replace.');
+
+            return;
+        }
+
+        $result = file_put_contents($config, $content);
+        if ($result) {
+            $io->write('Updated __APP_NAME__ value in config/' . $file);
+
+            return;
+        }
+        $io->write('Unable to update __APP_NAME__ value.');
     }
 }
