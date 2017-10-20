@@ -43,6 +43,9 @@ class ErrorController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        if ($this->request->is('json')) {
+            return;
+        }
         $this->viewBuilder()->className('Croogo/Core.Croogo');
         if ($this->request->param('prefix') === 'admin') {
             $adminTheme = Configure::read('Site.admin_theme') ?: 'Croogo/Core';
