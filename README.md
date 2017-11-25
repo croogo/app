@@ -1,51 +1,54 @@
-# CakePHP Application Skeleton
+# Croogo
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+**Croogo** is a free, open source, content management system for PHP, released under [MIT License](http://github.com/croogo/croogo/blob/master/LICENSE.txt).
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
+It is powered by [CakePHP](http://cakephp.org) MVC framework.
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+[![Build Status](https://secure.travis-ci.org/croogo/croogo.png)](http://travis-ci.org/croogo/croogo)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/croogo/croogo/badges/quality-score.png?s=af82d83fa37e1817f3ff21ad4bf2a320b49b2124)](https://scrutinizer-ci.com/g/croogo/croogo/)
+[![Code Coverage](https://scrutinizer-ci.com/g/croogo/croogo/badges/coverage.png?s=261fc6b969dc3e45e05f2f6d1b4728da6d434c2a)](https://scrutinizer-ci.com/g/croogo/croogo/)
+
+## Requirements
+  * Apache with `mod_rewrite`
+  * PHP 5.5 or higher
+  * MySQL 5.7 or higher
 
 ## Installation
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+#### Installation using composer
 
-If Composer is installed globally, run
+The preferred way to install Croogo is by using [composer](http://getcomposer.org).
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+    composer create-project croogo/app myapp
+    cd myapp
+    composer install
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+If you want hack on croogo, you can use the `--prefer-source` flag, ie:
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+    `composer create-project --prefer-source croogo/app myapp`
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+#### Web based installer
 
-```bash
-bin/cake server -p 8765
-```
+  * Extract the archive. Upload the content to your server.
+  * Create a new MySQL database (`utf8_unicode_ci` collation)
+  * Visit http://your-site.com/ from your browser and follow the instructions.
 
-Then visit `http://localhost:8765` to see the welcome page.
+#### Manual installation
 
-## Update
+  * Extract the archive. Upload the content to your server.
+  * Locate your `config` directory, and rename the following files:
+    * `config/app.default.php ` to `config/app.php`, and edit the details.
+  * You can access your admin panel at http://your-site.com/admin. The installer
+    should display a page for you to create the administrative user.
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+## Links
 
-## Configuration
+  * **Official website**: [http://croogo.org](http://croogo.org)
+  * **Blog**: [http://blog.croogo.org](http://blog.croogo.org)
+  * **Downloads**: [http://downloads.croogo.org](http://downloads.croogo.org)
+  * **Issue Tracker**: [http://github.com/croogo/croogo/issues](http://github.com/croogo/croogo/issues)
+  * **Documentation**: [http://docs.croogo.org](http://docs.croogo.org)
+  * **Google Group**: [http://groups.google.com/group/croogo](http://groups.google.com/group/croogo)
+  * **IRC Channel**: [#croogo](irc://irc.freenode.net/croogo) on irc.freenode.net
 
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
-
-## Layout
-
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+  * **Gitter**: [![Join the chat at https://gitter.im/croogo/croogo](https://badges.gitter.im/croogo/croogo.svg)](https://gitter.im/croogo/croogo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
