@@ -63,6 +63,9 @@ class AppController extends Controller
         /*
          * Uncomment the following to allow automatic viewVars serialization
          * when using JsonView or XmlView.
+         * Note: This is intended to get started quickly in development
+         * and should not be used in production.
+         * You should instead set "_serialize" in each action as required.
          */
         //if (!array_key_exists('_serialize', $this->viewVars) &&
         //    in_array($this->response->type(), ['application/json', 'application/xml'])
