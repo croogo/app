@@ -154,7 +154,7 @@ return [
      */
     'Error' => [
         'errorLevel' => E_ALL,
-        'exceptionRenderer' => 'Cake\Error\ExceptionRenderer',
+        'exceptionRenderer' => 'Croogo\Core\Error\ExceptionRenderer',
         'skipLog' => [],
         'log' => true,
         'trace' => true,
