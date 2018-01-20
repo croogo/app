@@ -14,7 +14,6 @@
  */
 namespace App\Controller;
 
-use Cake\Core\Configure;
 use Cake\Event\Event;
 
 /**
@@ -42,19 +41,6 @@ class ErrorController extends AppController
      */
     public function beforeFilter(Event $event)
     {
-        parent::beforeFilter($event);
-        if ($this->request->is('json')) {
-            return;
-        }
-        $this->viewBuilder()->className('Croogo/Core.Croogo');
-        if ($this->request->param('prefix') === 'admin') {
-            $adminTheme = Configure::read('Site.admin_theme') ?: 'Croogo/Core';
-            $this->viewBuilder()->setTheme($adminTheme);
-            $this->viewBuilder()->setLayout('admin_full');
-        } else {
-            $siteTheme = Configure::read('Site.theme') ?: 'Croogo/Core';
-            $this->viewBuilder()->setTheme($siteTheme);
-        }
     }
 
     /**
