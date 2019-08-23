@@ -2,7 +2,6 @@
 
 use Cake\Cache\Engine\FileEngine;
 use Cake\Database\Connection;
-use Cake\Database\Driver\Mysql;
 use Cake\Log\Engine\FileLog;
 use Cake\Mailer\Transport\MailTransport;
 use Croogo\Core\Error\ExceptionRenderer;
@@ -257,7 +256,7 @@ return [
     'Datasources' => [
         'default' => [
             'className' => Connection::class,
-            'driver' => Mysql::class,
+            'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',
             /*
@@ -305,7 +304,7 @@ return [
          */
         'test' => [
             'className' => Connection::class,
-            'driver' => Mysql::class,
+            'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
