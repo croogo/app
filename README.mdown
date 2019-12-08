@@ -2,4 +2,4 @@
 
 **Croogo** is a free, open source, content management system for PHP, released under [MIT License](http://github.com/croogo/croogo/blob/master/LICENSE.txt).
 
-Please refer to the main [README file](//github.com/croogo/croogo/tree/master/README.mdown)
+Please refer to the main [README file](//github.com/croogo/croogo/tree/4.0.2/README.mdown)
