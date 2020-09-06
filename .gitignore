@@ -1,6 +1,6 @@
 # CakePHP specific files #
 ##########################
-/config/app.php
+/config/app_local.php
 /config/.env
 /logs/*
 /tmp/*
@@ -20,6 +20,8 @@ Thumbs.db
 
 # Tool specific files #
 #######################
+# PHPUnit
+.phpunit.result.cache
 # vim
 *~
 *.swp
