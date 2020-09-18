@@ -26,8 +26,7 @@
         "cakephp/cakephp": "~4.1.0",
         "cakephp/migrations": "^3.0",
         "cakephp/plugin-installer": "^1.2",
-        "croogo/ckeditor": "^4.0",
-        "croogo/croogo": "^4.0.6",
+        "croogo/croogo": "5.0.x-dev",
         "mobiledetect/mobiledetectlib": "^2.8"
     },
     "require-dev": {
