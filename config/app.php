@@ -1,10 +1,13 @@
 <?php
 
-use Cake\Cache\Engine\FileEngine;
+use Cake\Cache\Engine\FileEngine as CacheEngine;
 use Cake\Database\Connection;
-use Cake\Log\Engine\FileLog;
+use Cake\Log\Engine\FileLog as LogEngine;
 use Cake\Mailer\Transport\MailTransport;
 use Croogo\Core\Error\ExceptionRenderer;
+
+$appName = 'myapp';
+$cachePrefix = "${appName}_";
 
 return [
     /*
@@ -99,8 +102,9 @@ return [
      */
     'Cache' => [
         'default' => [
-            'className' => FileEngine::class,
+            'className' => CacheEngine::class,
             'path' => CACHE,
+            'prefix' => $cachePrefix,
             'url' => env('CACHE_DEFAULT_URL', null),
         ],
 
@@ -111,9 +115,9 @@ return [
          * If you set 'className' => 'Null' core cache will be disabled.
          */
         '_cake_core_' => [
-            'className' => FileEngine::class,
-            'prefix' => 'myapp_cake_core_',
+            'className' => CacheEngine::class,
             'path' => CACHE . 'persistent' . DS,
+            'prefix' => $cachePrefix .'cake_core_',
             'serialize' => true,
             'duration' => '+1 years',
             'url' => env('CACHE_CAKECORE_URL', null),
@@ -126,9 +130,9 @@ return [
          * Duration will be set to '+2 minutes' in bootstrap.php when debug = true
          */
         '_cake_model_' => [
-            'className' => FileEngine::class,
-            'prefix' => 'myapp_cake_model_',
+            'className' => CacheEngine::class,
             'path' => CACHE . 'models' . DS,
+            'prefix' => $cachePrefix . 'cake_model_',
             'serialize' => true,
             'duration' => '+1 years',
             'url' => env('CACHE_CAKEMODEL_URL', null),
@@ -140,9 +144,9 @@ return [
          * Duration will be set to '+2 seconds' in bootstrap.php when debug = true
          */
         '_cake_routes_' => [
-            'className' => FileEngine::class,
-            'prefix' => 'myapp_cake_routes_',
+            'className' => CacheEngine::class,
             'path' => CACHE,
+            'prefix' => $cachePrefix . 'cake_routes_',
             'serialize' => true,
             'duration' => '+1 years',
             'url' => env('CACHE_CAKEROUTES_URL', null),
@@ -349,7 +353,7 @@ return [
      */
     'Log' => [
         'debug' => [
-            'className' => FileLog::class,
+            'className' => LogEngine::class,
             'path' => LOGS,
             'file' => 'debug',
             'url' => env('LOG_DEBUG_URL', null),
@@ -357,7 +361,7 @@ return [
             'levels' => ['notice', 'info', 'debug'],
         ],
         'error' => [
-            'className' => FileLog::class,
+            'className' => LogEngine::class,
             'path' => LOGS,
             'file' => 'error',
             'url' => env('LOG_ERROR_URL', null),
@@ -366,7 +370,7 @@ return [
         ],
         // To enable this dedicated query log, you need set your datasource's log flag to true
         'queries' => [
-            'className' => FileLog::class,
+            'className' => LogEngine::class,
             'path' => LOGS,
             'file' => 'queries',
             'url' => env('LOG_QUERIES_URL', null),
