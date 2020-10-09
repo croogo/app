@@ -24,7 +24,9 @@ use Cake\Http\Middleware\BodyParserMiddleware;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\AssetMiddleware;
-use Croogo\Core\Routing\Middleware\RoutingMiddleware;
+use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\Routing\RouteBuilder;
+use Croogo\Core\Routing\Router;
 
 /**
  * Application setup class.
@@ -59,6 +61,26 @@ class Application extends BaseApplication
         // Load more plugins here
         $this->addPlugin('Acl');
         $this->addPlugin('Croogo/Core');
+    }
+
+    /**
+     * Override default RouteBuilder to support automatic creation of i18n route
+     *
+     * @inheritdoc
+     */
+    public function routes(RouteBuilder $routes): void
+    {
+        parent::routes(Router::createRouteBuilder('/'));
+    }
+
+    /**
+     * Override default RouteBuilder to support automatic creation of i18n route
+     *
+     * @inheritdoc
+     */
+    public function pluginRoutes(RouteBuilder $routes): RouteBuilder
+    {
+        return parent::pluginRoutes(Router::createRouteBuilder('/'));
     }
 
     /**
