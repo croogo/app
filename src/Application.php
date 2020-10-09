@@ -25,6 +25,7 @@ use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 use Croogo\Core\Routing\Router;
 
@@ -70,7 +71,9 @@ class Application extends BaseApplication
      */
     public function routes(RouteBuilder $routes): void
     {
-        parent::routes(Router::createRouteBuilder('/'));
+        $routes = Router::createRouteBuilder('/');
+        $routes->setRouteClass(DashedRoute::class);
+        parent::routes($routes);
     }
 
     /**
@@ -80,7 +83,9 @@ class Application extends BaseApplication
      */
     public function pluginRoutes(RouteBuilder $routes): RouteBuilder
     {
-        return parent::pluginRoutes(Router::createRouteBuilder('/'));
+        $routes = Router::createRouteBuilder('/');
+        $routes->setRouteClass(DashedRoute::class);
+        return parent::pluginRoutes($routes);
     }
 
     /**
